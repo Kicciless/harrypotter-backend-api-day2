@@ -27,6 +27,17 @@ app.get('/characters/:id', (req,res)=>{
     }
     })
 
+// I need to add spefic end point for the names, rather than just their ID 
+    app.get('/characters/:name', (req,res)=>{
+        const name=parseInt (req.params.name);
+        const character=characters.find((character)=>character.name==name)
+        if (character==undefined){
+            res.status(404).send("the character does not exist")
+        } else{
+            res.send(character)
+        }
+        })
+
     // .map allows only the characters id to be added to an additional array 
     //...id - can be used to anything that has iteratible (more than elements) can checks and through everything
 const ids=characters.map((character)=>(character.id))
