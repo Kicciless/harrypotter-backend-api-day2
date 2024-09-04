@@ -6,6 +6,7 @@ const characters=require('./harrypotter.json')
 
 //middleware  - from json
 app.use(express.json())
+app.use(cors())
 
 app.get('/',(req,res)=>{
     res.send("Hello Harry Potter Characters")
